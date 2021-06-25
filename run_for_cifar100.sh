@@ -4,7 +4,7 @@ mkdir cifar100
 
 python adv_train_set_gen.py --type=cifar100 --batch_size=200 --atype='pgd' --eps=0.04 --alpha=0.016 --steps=10 --path=./cifar100 --model_pth=./cifar100_baseline_vgg16_bn.pth
 
-python adv_dataset_gen.py --type=cifar100 --batch_size=200 --atype='pgd' --eps=0.04 --alpha=0.016 --steps=10 --path=./cifar100 --model_pth=~/scratch60/Neurosim_3/Inference_pytorch/code_cleanup/cifar100/cifar100_baseline_vgg16_bn.pth
+python adv_dataset_gen.py --type=cifar100 --batch_size=200 --atype='pgd' --eps=0.04 --alpha=0.016 --steps=10 --path=./cifar100 --model_pth=./cifar100_baseline_vgg16_bn.pth
 
 python phase1_training.py --type=cifar100 --batch_size=200 --epochs=257 --la=0.6 --lc=0.1 --lr=0.01 --pgd_params=8_4_10 --baseline_model_pth=./cifar100_baseline_vgg16_bn.pth --train_pth=./cifar100/adv_train_set_cifar100_pgd_e=0.04_a=0.016_n=10 --test_pth=./cifar100/adv_test_set_cifar100_pgd_e=0.04_a=0.016_n=10 --save_pth=./cifar100
 
