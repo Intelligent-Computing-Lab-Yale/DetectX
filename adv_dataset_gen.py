@@ -4,7 +4,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 import torch.backends.cudnn as cudnn
-import pgd
+import adv_attacks
 
 import torchvision
 import torchvision.transforms as transforms
@@ -93,7 +93,7 @@ def pgd_attack(net, device, testloader):
         inp_var, true_label = Variable(inputs.cuda(), requires_grad=True), Variable(labels_tru.cuda()
                                                                                     , requires_grad=False)
 
-        inp_adv = pgd.pgd_attack(net, inp_var, true_label, args.eps, args.alpha, args.steps)
+        inp_adv = adv_attacks.pgd_attack(net, inp_var, true_label, args.eps, args.alpha, args.steps)
 
         if count < 4:
             adv_data_batch.append(inp_adv)
@@ -159,7 +159,7 @@ def test_attack( model, device, testloader ):
       data_grad = data.grad.data
 
       # Call FGSM Attack
-      perturbed_data = fgsm_attack(data, args.eps, data_grad)
+      perturbed_data = adv_attacks.fgsm_attack(data, args.eps, data_grad)
       # pert = (perturbed_data-data).abs().mean()
       # print(pert)
       # da_tuple = (perturbed_data, target)
