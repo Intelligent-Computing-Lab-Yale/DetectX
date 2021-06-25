@@ -1,4 +1,4 @@
-# DetectX
+# DetectX: Adversarial Input Detection using Current Signatures in Memristive XBar Arrays
 This repo contains the source code for the paper "DetectX: Adversarial Input Detection using Current Signatures in Memristive XBar Arrays" (https://arxiv.org/abs/2106.12021)
 ## Requirements
 
